@@ -1,6 +1,7 @@
 import store from "./store/store";
 // import * as actions from "./store/product/actionTypes";
-import { productAdded, productUpdatedMarkDiscount } from "./store/product";
+import { productAdded, productUpdatedMarkDiscount } from "./store/newProduct";
+import { productAddedToCart, productRemovedFromCart } from "./store/cart";
 
 
 store.subscribe(() => {
@@ -25,13 +26,25 @@ store.dispatch(productAdded({
 store.dispatch(productUpdatedMarkDiscount({
     id: 2,
     hasDiscount: true
-}))
+}));
 
-store.dispatch({
-    type: actions.PRODUCT_REMOVED,
-    payload: {
-        id: 1
-    }
-});
+// store.dispatch({
+//     type: actions.PRODUCT_REMOVED,
+//     payload: {
+//         id: 1
+//     }
+// });
 
-console.log(store.getState())
+store.dispatch(productAddedToCart({
+    productId: 1,
+    quantity: 10
+}));
+
+store.dispatch(productAddedToCart({
+    productId: 2,
+    quantity: 20
+}));
+
+store.dispatch(productRemovedFromCart({
+    id: 1
+}));
