@@ -1,14 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let lastId = 0;
-const initialState = [];
+const initialState = {
+    list: []
+};
 
 const slice = createSlice({
     name: "products",
     initialState: initialState,
     reducers: {
+        apiProductsRequestSucceeded: (products, action) => {
+            products.list = action.payload;
+        },
         productAdded: (products, action) => {
-            products.push({
+            products.list.push({
                 id: ++lastId,
                 name: action.payload.name,
                 price: action.payload.price,
@@ -16,7 +21,7 @@ const slice = createSlice({
             });
         },
         productUpdatedMarkDiscount: (products, action) => {
-            const index = products.findIndex(product => product.id === action.payload.id);
+            const index = products.list.findIndex(product => product.id === action.payload.id);
             if(index > -1) {
                 products[index].hasDiscount = action.payload.hasDiscount;
             }
@@ -24,5 +29,5 @@ const slice = createSlice({
     }
 });
 
-export const { productAdded, productUpdatedMarkDiscount } = slice.actions;
+export const { productAdded, productUpdatedMarkDiscount, apiProductsRequestSucceeded } = slice.actions;
 export default slice.reducer;

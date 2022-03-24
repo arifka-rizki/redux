@@ -1,13 +1,12 @@
-import { createStore } from "redux";
-// import reducer from "./newProduct";
-// import reducer from "./cart";
+import { configureStore } from "@reduxjs/toolkit";
 import reducer from "./reducer"
-import { devToolsEnhancer } from "@redux-devtools/extension";
+import logger from "./middleware/logger"
+import api from "./middleware/api";
+// import { devToolsEnhancer } from "@redux-devtools/extension";
 
-const store = createStore(
+const store = configureStore({
     reducer,
-    devToolsEnhancer({ trace: true })
-)
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, api)
+});
 
 export default store;
