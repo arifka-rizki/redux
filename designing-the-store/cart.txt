@@ -1,0 +1,13 @@
+{
+    id: ,
+    items: [
+        {
+            product:{...},
+            quantity: ,
+        },
+        {
+            ...
+        }
+    ],
+    userId: ,
+}

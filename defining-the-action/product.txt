@@ -1,0 +1,15 @@
+{
+    type: "productAdded",
+    payload: {
+        name: ,
+        price: ,
+        hasDiscount: ,
+    }
+}
+
+{
+    type: "productRemoved",
+    payload: {
+        id:
+    }
+}

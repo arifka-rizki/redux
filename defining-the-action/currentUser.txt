@@ -1,0 +1,15 @@
+{
+    type: "userUpdatedName",
+    payload: {
+        id: ,
+        name: 
+    }
+}
+
+{
+    type: "userUpdatedCart",
+    payload: {
+        id: ,
+        cartId:
+    }
+}

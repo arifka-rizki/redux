@@ -1,0 +1,13 @@
+{
+    type: "productRemovedFromCart",
+    payload: {
+        id: 
+    }
+}
+
+{
+    type: "productAddedToCart",
+    payload: {
+        product: {...}
+    }
+}
